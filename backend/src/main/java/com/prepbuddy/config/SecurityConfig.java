@@ -45,7 +45,6 @@ public class SecurityConfig {
 
        http
                .csrf(csrf->csrf.disable())
-               .csrf(csrf -> csrf.disable())
                .cors(Customizer.withDefaults())
                .sessionManagement(session->
                        session.sessionCreationPolicy(
@@ -61,18 +60,16 @@ public class SecurityConfig {
                        auth
 
                                .requestMatchers(
-                                       "/api/auth/**",
+                                       "/auth/**",
                                        "/swagger-ui/**",
                                        "/swagger-ui.html",
                                        "/v3/api-docs/**",
                                        "/error",
                                        "/v3/api-docs")
-
                                .permitAll()
 
                                .anyRequest()
-
-                               .authenticated())
+                               .permitAll())
 
                .addFilterBefore(jwtFilter,
                        UsernamePasswordAuthenticationFilter.class
