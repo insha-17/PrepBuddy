@@ -55,10 +55,8 @@ public class SecurityConfig {
 
                        .accessDeniedHandler(accessDeniedHandler)
                )
-               .authorizeHttpRequests(auth->
-
+               .authorizeHttpRequests(auth ->
                        auth
-
                                .requestMatchers(
                                        "/auth/**",
                                        "/swagger-ui/**",
@@ -69,7 +67,7 @@ public class SecurityConfig {
                                .permitAll()
 
                                .anyRequest()
-                               .permitAll())
+                               .authenticated())
 
                .addFilterBefore(jwtFilter,
                        UsernamePasswordAuthenticationFilter.class
