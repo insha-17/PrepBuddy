@@ -89,6 +89,7 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
 
         CorsConfiguration configuration = new CorsConfiguration();
+        // CORS configuration for deployed frontend
         configuration.setAllowedOriginPatterns(List.of(
                 "http://localhost:*",
                 "https://prep-buddy-two.vercel.app"
